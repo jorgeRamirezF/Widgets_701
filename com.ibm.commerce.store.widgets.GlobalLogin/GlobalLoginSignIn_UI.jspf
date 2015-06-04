@@ -43,12 +43,10 @@
 </script>
 
 <a href="javascript:GlobalLoginJS.InitHTTPSecure('<c:out value="${widgetId}"/>');" id="${widgetId}_signInQuickLink" tabIndex="0" class="panelLinkSelected" aria-label="<fmt:message bundle="${widgetText}" key="GLOBALLOGIN_SIGN_IN_OR_REGISTER"/>"> <span class="msgLoginUser"> <fmt:message bundle="${widgetText}" key="GLOBALLOGIN_SIGN_IN_OR_REGISTER"/> </span> </a>										
-		
 <c:set var="acceLabelKey" value="GLOBALLOGIN_SIGN_IN_PANEL" />	
 <c:if test="${fn:contains(widgetId, 'QuickLinks_GlobalLogin')}">	
 	<c:set var="acceLabelKey" value="GLOBALLOGIN_SIGN_IN_TEXT" />
-</c:if>
-		
+</c:if>		
 <div dojoType="wc.widget.RefreshArea" class="GlobalLoginWidgetAlt" widgetId="${widgetId}" id="${widgetId}" controllerId="GlobalLogin_SignIn_controller" role="region" aria-label="<fmt:message bundle="${widgetText}" key="${acceLabelKey}"/>" ariaMessage="<fmt:message key="ACCE_STATUS_GLOBALLOGIN_UPDATED" bundle="${widgetText}"/>"
    data-toggle-control="${widgetId}_signInQuickLink">
 </div>
