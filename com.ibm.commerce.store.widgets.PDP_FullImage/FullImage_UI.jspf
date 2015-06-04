@@ -29,10 +29,11 @@
 							<div class="other_views" id="ProductAngleImagesArea">
 						</c:when>
 						<c:otherwise>
-							<div class="other_views nodisplay" id="ProductAngleImagesArea">
+							<div class="other_views"  id="ProductAngleImagesArea">
 						</c:otherwise>					
 					</c:choose>					
-								<div class="other_views_text"><fmt:message key="FI_OTHER_VIEW" bundle="${widgetText}"/></div>
+								<!-- <div class="other_views_text"><fmt:message key="FI_OTHER_VIEW" bundle="${widgetText}"/></div> -->
+									<div class="other_views_text"></div>
 									<ul id="ProductAngleImagesAreaList">							
 									<c:forEach var="status" begin="1" end="${thumbnailCount - 1}">
 									<c:set var="imageCount" value="${status - 1}"/>
