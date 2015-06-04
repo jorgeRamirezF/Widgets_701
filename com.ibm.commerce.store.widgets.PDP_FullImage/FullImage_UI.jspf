@@ -1,0 +1,58 @@
+<%--
+ =================================================================
+  Licensed Materials - Property of IBM
+
+  WebSphere Commerce
+
+  (C) Copyright IBM Corp. 2011, 2014 All Rights Reserved.
+
+  US Government Users Restricted Rights - Use, duplication or
+  disclosure restricted by GSA ADP Schedule Contract with
+  IBM Corp.
+ =================================================================
+--%>
+
+<!-- Widget Product Image Viewer -->
+<c:if test="${!empty catalogEntryID}">
+	<div id="widget_product_image_viewer<c:out value="${widgetSuffix}"/>" class="widget_product_image_viewer">
+
+				<div class="content">
+					<div class="image_container">
+						<img id="productMainImage" src="${productFullImage}" alt="<c:out value="${fullImageAltDescription}" escapeXml="false"/>" title="<c:out value="${fullImageAltDescription}" escapeXml="false"/>" class="product_main_image"/>
+						<div class="clear_float"></div>
+						<div class="hover_text">
+							<span style="display:none;"><fmt:message key="FI_HOVER_OVER_IMAGE_TO_ZOOM" bundle="${widgetText}"/></span>
+						</div>
+					</div>
+					<c:choose>
+						<c:when test="${!empty angleFullImageAttachmentMap && !empty angleThumbnailAttachmentShortDescMap && !empty angleThumbnailAttachmentMap}">						
+							<div class="other_views" id="ProductAngleImagesArea">
+						</c:when>
+						<c:otherwise>
+							<div class="other_views nodisplay" id="ProductAngleImagesArea">
+						</c:otherwise>					
+					</c:choose>					
+								<div class="other_views_text"><fmt:message key="FI_OTHER_VIEW" bundle="${widgetText}"/></div>
+									<ul id="ProductAngleImagesAreaList">							
+									<c:forEach var="status" begin="1" end="${thumbnailCount - 1}">
+									<c:set var="imageCount" value="${status - 1}"/>
+									<c:set var="imageCountStr">${status}</c:set>
+									<li id="productAngleLi${imageCount}">
+										<a id="WC_CachedProductOnlyDisplay_links_1_${imageCount}" href="JavaScript:changeThumbNail('productAngleLi${imageCount}','<c:out value="${angleFullImageAttachmentMap[imageCountStr]}"/>');" title='<c:out value="${angleThumbnailAttachmentShortDescMap[imageCountStr]}"/>'>
+											<img id="WC_CachedProductOnlyDisplay_images_1_${imageCount}" src='<c:out value="${angleThumbnailAttachmentMap[imageCountStr]}"/>' alt='<c:out value="${angleThumbnailAttachmentShortDescMap[imageCountStr]}"/>'>
+										</a>
+									</li>
+									</c:forEach>
+								</ul>
+							</div>
+				</div>
+		<div class="clear_float"></div>
+		<c:set var="hiddenFieldName" value="ProductInfoImage_${catalogEntryID}"/>
+		<c:if test="${!fn:contains(env_hiddenFieldsList, hiddenFieldName)}">
+			<input type="hidden" id="${hiddenFieldName}" value="<c:out value='${productFullImage}'/>"/>	
+			<c:set var="env_hiddenFieldsList" value="${env_hiddenFieldsList},${hiddenFieldName}" scope="request"/>
+		</c:if>
+
+	</div>
+</c:if>
+<!-- End Widget Product Image Viewer -->
