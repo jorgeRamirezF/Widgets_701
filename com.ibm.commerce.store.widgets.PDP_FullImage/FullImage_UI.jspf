@@ -12,13 +12,30 @@
  =================================================================
 --%>
 
+
+<script src="${jsAssetsDir}javascript/jquery.zoom.js"></script>
+
+<script>
+$(document).ready(function(){
+	$('#imagen1').zoom();
+	
+	$('.zoom').click(function(){	
+	 	var images = $('.zoom img').attr(src);
+  		alert(images);      
+	});
+});
+</script>
+
+
 <!-- Widget Product Image Viewer -->
 <c:if test="${!empty catalogEntryID}">
 	<div id="widget_product_image_viewer<c:out value="${widgetSuffix}"/>" class="widget_product_image_viewer">
 
 				<div class="content">
 					<div class="image_container">
-						<img id="productMainImage" src="${productFullImage}" alt="<c:out value="${fullImageAltDescription}" escapeXml="false"/>" title="<c:out value="${fullImageAltDescription}" escapeXml="false"/>" class="product_main_image"/>
+						<span class='zoom' id='imagen1' >
+							<img width='380' id="productMainImage" src="${productFullImage}" alt="<c:out value="${fullImageAltDescription}" escapeXml="false"/>" title="<c:out value="${fullImageAltDescription}" escapeXml="false"/>" class="product_main_image"/>
+						</span>
 						<div class="clear_float"></div>
 						<div class="hover_text">
 							<span style="display:none;"><fmt:message key="FI_HOVER_OVER_IMAGE_TO_ZOOM" bundle="${widgetText}"/></span>
