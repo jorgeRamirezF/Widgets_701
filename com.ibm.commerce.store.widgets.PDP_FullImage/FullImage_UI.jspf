@@ -15,16 +15,7 @@
 
 <script src="${jsAssetsDir}javascript/jquery.zoom.js"></script>
 
-<script>
-$(document).ready(function(){
-	$('#imagen1').zoom();
-	
-	$('.zoom').click(function(){	
-	 	var images = $('.zoom img').attr(src);
-  		alert(images);      
-	});
-});
-</script>
+
 
 
 <!-- Widget Product Image Viewer -->
@@ -74,3 +65,14 @@ $(document).ready(function(){
 	</div>
 </c:if>
 <!-- End Widget Product Image Viewer -->
+
+<script>
+$(document).ready(function(){
+// 	$('#imagen1').zoom();
+	
+		//$('.zoom').zoom();
+		$('#imagen1').zoom();
+// 	 	var images = $('.zoom img').attr('src');
+//   		alert(images);      
+});
+</script>
