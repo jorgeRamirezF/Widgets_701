@@ -28,7 +28,7 @@
 					
 						<div class="clear_float"></div>
 						<div class="item_spacer_10px"></div>
-						<a id="add2CartBtn" href="javascript:setCurrentId('add2CartBtn');productDisplayJS.Add2ShopCartAjax('entitledItem_<c:out value='${catalogEntryID}'/>',document.getElementById('quantity_<c:out value='${catalogEntryID}'/>').value, false)" wairole="button" role="button" class="button primary"
+						<a id="add2CartBtn" href="javascript:setCurrentId('add2CartBtn');productDisplayJS.Add2ShopCartAjax('entitledItem_<c:out value='${catalogEntryID}'/>',document.getElementById('quantity_<c:out value='${catalogEntryID}'/>').value, false)" wairole="button" role="button" class="btnAzul"
 							title="<fmt:message key="PD_ADD_TO_CART" bundle="${widgetText}"/>" onKeyPress="javascript:MessageHelper.setFocusElement('add2CartBtn');">
 							<div class="left_border"></div>
 							<div id="productPageAdd2Cart" class="button_text">
