@@ -25,7 +25,7 @@
 				<div class="content">
 					<div class="image_container">
 						<span class='zoom' id='imagen1' >
-							<img width='380' id="productMainImage" src="${productFullImage}" alt="<c:out value="${fullImageAltDescription}" escapeXml="false"/>" title="<c:out value="${fullImageAltDescription}" escapeXml="false"/>" class="product_main_image"/>
+							<img width='360' id="productMainImage" src="${productFullImage}" alt="<c:out value="${fullImageAltDescription}" escapeXml="false"/>" title="<c:out value="${fullImageAltDescription}" escapeXml="false"/>" class="product_main_image"/>
 						</span>
 						<div class="clear_float"></div>
 						<div class="hover_text">
@@ -47,8 +47,8 @@
 									<c:set var="imageCount" value="${status - 1}"/>
 									<c:set var="imageCountStr">${status}</c:set>
 									<li id="productAngleLi${imageCount}">
-										<a id="WC_CachedProductOnlyDisplay_links_1_${imageCount}" href="JavaScript:changeThumbNail('productAngleLi${imageCount}','<c:out value="${angleFullImageAttachmentMap[imageCountStr]}"/>');" title='<c:out value="${angleThumbnailAttachmentShortDescMap[imageCountStr]}"/>'>
-											<img id="WC_CachedProductOnlyDisplay_images_1_${imageCount}" src='<c:out value="${angleThumbnailAttachmentMap[imageCountStr]}"/>' alt='<c:out value="${angleThumbnailAttachmentShortDescMap[imageCountStr]}"/>'>
+										<a id="WC_CachedProductOnlyDisplay_links_1_${imageCount}" class="thumbimage" rel="image_${imageCount}" href="JavaScript:changeThumbNail('productAngleLi${imageCount}','<c:out value="${angleFullImageAttachmentMap[imageCountStr]}"/>');" title='<c:out value="${angleThumbnailAttachmentShortDescMap[imageCountStr]}"/>'>
+											<img id="WC_CachedProductOnlyDisplay_images_1_${imageCount}" class="image_${imageCount}" src='<c:out value="${angleThumbnailAttachmentMap[imageCountStr]}"/>' alt='<c:out value="${angleThumbnailAttachmentShortDescMap[imageCountStr]}"/>'>
 										</a>
 									</li>
 									</c:forEach>
@@ -68,11 +68,36 @@
 
 <script>
 $(document).ready(function(){
-// 	$('#imagen1').zoom();
 	
-		//$('.zoom').zoom();
-		$('#imagen1').zoom();
-// 	 	var images = $('.zoom img').attr('src');
-//   		alert(images);      
+	$('.zoom').zoom();
+	
+	var refrerencia = "";
+	var claseImagen = "";
+
+	$(".thumbimage").click(function(){
+	
+		refrerencia = "";
+	    claseImagen = "";
+	
+		claseImagen = $(this).attr('rel');
+		referencia = $("."+claseImagen).attr('src');
+		//alert(referencia);
+		
+		$(".zoom").remove();
+		
+		$(".image_container").html("<span class='zoom' style='position: relative; overflow: hidden;'><img width='360' class='product_main_image' title='Image for Tablet Alcatel ONETOUCH from AuroraESite' alt='Image for Tablet Alcatel ONETOUCH from AuroraESite' src="+referencia+" id='productMainImage' />");
+		$('.zoom').zoom(); 
+		
+		$(".zoom").hover(function(){
+			$(".zoom").css("cursor","zoom-in");
+		});
+	});
+	
+	$(".zoom").hover(function(){
+		$(".zoom").css("cursor","zoom-in");
+	});
+	
+		
+
 });
 </script>
